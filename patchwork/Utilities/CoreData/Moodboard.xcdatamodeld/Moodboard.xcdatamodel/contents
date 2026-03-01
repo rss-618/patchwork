@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24512" systemVersion="25C56" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Moodboard" representedClassName="MoodboardModel" syncable="YES" codeGenerationType="none">
+        <attribute name="id" optional="YES" attributeType="UUID" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="canvasWidth" optional="NO" attributeType="Double" defaultValueString="1.0" syncable="YES"/>
+        <attribute name="canvasHeight" optional="NO" attributeType="Double" defaultValueString="1.0" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BoardItem" inverseName="moodboard" inverseEntity="BoardItem" syncable="YES"/>
+    </entity>
+    <entity name="BoardItem" representedClassName="BoardItem" isAbstract="YES" syncable="YES" codeGenerationType="none">
+        <attribute name="id" optional="YES" attributeType="UUID" syncable="YES"/>
+        <attribute name="zIndex" optional="NO" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="centerXStorage" optional="NO" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="centerYStorage" optional="NO" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="widthStorage" optional="NO" attributeType="Double" defaultValueString="1.0" syncable="YES"/>
+        <attribute name="heightStorage" optional="NO" attributeType="Double" defaultValueString="1.0" syncable="YES"/>
+        <attribute name="rotationRadiansStorage" optional="NO" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deletedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="moodboard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moodboard" inverseName="items" inverseEntity="Moodboard" syncable="YES"/>
+    </entity>
+    <entity name="ImageItem" representedClassName="ImageItem" parentEntity="BoardItem" syncable="YES" codeGenerationType="none">
+        <attribute name="imageLocalPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="opacity" optional="NO" attributeType="Double" defaultValueString="1.0" syncable="YES"/>
+        <attribute name="cropX" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="cropY" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="cropWidth" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="cropHeight" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="assetIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TextItem" representedClassName="TextItem" parentEntity="BoardItem" syncable="YES" codeGenerationType="none">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fontName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fontSize" optional="NO" attributeType="Double" defaultValueString="14.0" syncable="YES"/>
+        <attribute name="fontWeight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textColorHex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alignmentRaw" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ShapeItem" representedClassName="ShapeItem" parentEntity="BoardItem" syncable="YES" codeGenerationType="none">
+        <attribute name="shapeKindRaw" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fillColorHex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strokeColorHex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strokeWidth" optional="NO" attributeType="Double" defaultValueString="1.0" syncable="YES"/>
+        <attribute name="cornerRadius" optional="YES" attributeType="Double" syncable="YES"/>
+    </entity>
+</model>
